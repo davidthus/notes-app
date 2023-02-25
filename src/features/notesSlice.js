@@ -12,29 +12,22 @@ const notesSlice = createSlice({
       state.push(newNote);
     },
     editNote: (state, action) => {
-      const { editedNote } = action.payload;
+      const { newNote } = action.payload;
 
-      const indexOfNewNote = state.findIndex(
-        (note) => note.id === editedNote.id
-      );
+      const indexOfNewNote = state.findIndex((note) => note.id == newNote.id);
 
-      state.splice(indexOfNewNote, 1, editedNote);
+      state.splice(indexOfNewNote, 1, newNote);
     },
     deleteNote: (state, action) => {
       const { id } = action.payload;
 
-      const indexOfNote = state.findIndex((note) => note.id === id);
+      const indexOfNote = state.findIndex((note) => note.id == id);
       state.splice(indexOfNote, 1);
     },
   },
 });
 
 export const selectNotes = (state) => state.notes;
-export const selectNoteById = createSelector(
-  selectNotes,
-  (_, noteId) => noteId,
-  (notes, noteId) => notes.find((note) => note.id === noteId)
-);
 
 export const { addNote, editNote, deleteNote } = notesSlice.actions;
 export default notesSlice.reducer;

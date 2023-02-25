@@ -5,7 +5,7 @@ function AddNote() {
   return (
     <div>
       <NoteForm
-        intitialNote={{ id: Date.now(), title: "", content: "" }}
+        initialNote={{ id: Date.now(), title: "", content: "" }}
         type="add"
       />
     </div>

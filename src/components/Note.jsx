@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { selectNotes } from "../features/notesSlice";
 import NoteForm from "./NoteForm";
 
 function Note() {
   const { noteId } = useParams();
-  const [isEditing, setIsEditing] = useState(false);
+  const { isEditing } = useSelector((state) => state.user);
 
-  const note = useSelector((state) => selectNoteById(state, noteId));
+  const notes = useSelector(selectNotes);
+  const note = notes.find(({ id }) => id === Number(noteId));
 
   let content;
 
@@ -15,9 +17,13 @@ function Note() {
 
   content = (
     <div>
-      <h2>{note.title}</h2>
-      <hr />
-      <p>{note.content}</p>
+      {note && (
+        <>
+          <h2>{note.title}</h2>
+          <hr />
+          <p>{note.content}</p>
+        </>
+      )}
     </div>
   );
 

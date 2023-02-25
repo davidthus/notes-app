@@ -19,4 +19,4 @@ const userSlice = createSlice({
 });
 
 export const { toggleIsEditing } = userSlice.actions;
-export default userSlice.reducers;
+export default userSlice.reducer;

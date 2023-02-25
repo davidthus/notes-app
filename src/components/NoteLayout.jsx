@@ -1,15 +1,23 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { Link, Outlet } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
+import { deleteNote } from "../features/notesSlice";
 import { toggleIsEditing } from "../features/userSlice";
-import Note from "./Note";
 
 function NoteLayout() {
   const dispatch = useDispatch();
-  const { isEditing } = useSelector((state) => state.isEditing);
+  const { noteId } = useParams();
+  const navigate = useNavigate();
+  const { isEditing } = useSelector((state) => state.user);
   const handleClick = (e) => {
     e.preventDefault();
     dispatch(toggleIsEditing());
+  };
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    dispatch(deleteNote(Number(noteId)));
+    navigate("/");
   };
 
   useEffect(() => {
@@ -26,9 +34,10 @@ function NoteLayout() {
         <nav>
           <Link to="/">Home</Link>
           <button onClick={handleClick}>Edit</button>
+          <button onClick={handleDelete}>Delete</button>
         </nav>
       </header>
-      <Note />
+      <Outlet />
     </div>
   );
 }
