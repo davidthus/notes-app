@@ -21,7 +21,7 @@ function Note() {
         <>
           <h2>{note.title}</h2>
           <hr />
-          <p>{note.content}</p>
+          <p style={{ whiteSpace: "pre-wrap" }}>{note.content}</p>
         </>
       )}
     </div>
