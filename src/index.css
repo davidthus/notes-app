@@ -156,6 +156,7 @@ input:focus {
   padding: 1rem 2rem;
   border: 1px solid palevioletred;
   width: 100%;
+  max-width: 900px;
 }
 
 .form hr {
