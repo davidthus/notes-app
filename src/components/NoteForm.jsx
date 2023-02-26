@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addNote, editNote } from "../features/notesSlice";
+import { toggleIsEditing } from "../features/userSlice";
 
 function NoteForm({ initialNote, type }) {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ function NoteForm({ initialNote, type }) {
     };
     if (type === "edit") {
       dispatch(editNote({ newNote }));
-      navigate("/");
+      dispatch(toggleIsEditing());
     } else {
       dispatch(addNote({ newNote }));
       navigate("/");
