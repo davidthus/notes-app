@@ -1,13 +1,11 @@
 import React from "react";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import ReactSelect from "react-select";
 import { addNote, editNote } from "../features/notesSlice";
 import { toggleIsEditing } from "../features/userSlice";
 
 function NoteForm({ initialNote, type }) {
-  const { tags } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const {
     register,
