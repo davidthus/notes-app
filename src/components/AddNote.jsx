@@ -3,7 +3,7 @@ import NoteForm from "./NoteForm";
 
 function AddNote() {
   return (
-    <div>
+    <div className="form_wrapper">
       <NoteForm
         initialNote={{ id: Date.now(), title: "", content: "" }}
         type="add"

@@ -19,10 +19,9 @@ const notesSlice = createSlice({
       state.splice(indexOfNewNote, 1, newNote);
     },
     deleteNote: (state, action) => {
-      const { id } = action.payload;
+      const id = action.payload;
 
-      const indexOfNote = state.findIndex((note) => note.id == id);
-      state.splice(indexOfNote, 1);
+      return state.filter((note) => note.id !== Number(id));
     },
   },
 });

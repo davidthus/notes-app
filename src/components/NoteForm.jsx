@@ -29,18 +29,26 @@ function NoteForm({ initialNote, type }) {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input
-        defaultValue={initialNote.title}
-        {...register("title", { required: true })}
-      />
+    <form className="form" onSubmit={handleSubmit(onSubmit)}>
+      <div className="input-group">
+        <label htmlFor="title">Title:</label>
+        <input
+          id="title"
+          defaultValue={initialNote.title}
+          {...register("title", { required: true })}
+        />
+      </div>
       {errors.title?.message && <p>{errors.title.message}</p>}
       <hr />
-      <textarea
-        defaultValue={initialNote.content}
-        {...register("content", { required: true })}
-      />
-      {errors.content?.message && <p>{errors.content.message}</p>}
+      <div className="input-group">
+        <label htmlFor="content">Content:</label>
+        <textarea
+          id="content"
+          defaultValue={initialNote.content}
+          {...register("content", { required: true })}
+        />
+        {errors.content?.message && <p>{errors.content.message}</p>}
+      </div>
       <button type="submit">Save</button>
     </form>
   );

@@ -16,12 +16,12 @@ function Note() {
   if (isEditing) return (content = <NoteForm initialNote={note} type="edit" />);
 
   content = (
-    <div>
+    <div className="note-wrapper">
       {note && (
         <>
-          <h2>{note.title}</h2>
+          <h2 className="note_title">{note.title}</h2>
           <hr />
-          <p style={{ whiteSpace: "pre-wrap" }}>{note.content}</p>
+          <p className="note_content">{note.content}</p>
         </>
       )}
     </div>

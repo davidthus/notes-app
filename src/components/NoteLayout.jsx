@@ -9,7 +9,8 @@ function NoteLayout() {
   const { noteId } = useParams();
   const navigate = useNavigate();
   const { isEditing } = useSelector((state) => state.user);
-  const handleClick = (e) => {
+
+  const handleEdit = (e) => {
     e.preventDefault();
     dispatch(toggleIsEditing());
   };
@@ -29,12 +30,14 @@ function NoteLayout() {
   }, []);
 
   return (
-    <div>
+    <div className="note-page-wrapper">
       <header>
         <nav>
           <Link to="/">Home</Link>
-          <button onClick={handleClick}>Edit</button>
-          <button onClick={handleDelete}>Delete</button>
+          <button onClick={handleEdit}>Edit</button>
+          <button className="danger" onClick={handleDelete}>
+            Delete
+          </button>
         </nav>
       </header>
       <Outlet />

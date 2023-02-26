@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
 import AddNote from "./components/AddNote";
 import Note from "./components/Note";
 import NoteLayout from "./components/NoteLayout";
