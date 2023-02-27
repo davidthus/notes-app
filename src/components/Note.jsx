@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import ReactMarkdown from "react-markdown";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import remarkGfm from "remark-gfm";
 import { selectNotes } from "../features/notesSlice";
 import NoteForm from "./NoteForm";
 
@@ -21,7 +22,7 @@ function Note() {
         <>
           <h2 className="note_title">{note.title}</h2>
           <hr />
-          <p className="note_content">{note.content}</p>
+          <ReactMarkdown children={note.content} remarkPlugins={[remarkGfm]} />
         </>
       )}
     </div>
